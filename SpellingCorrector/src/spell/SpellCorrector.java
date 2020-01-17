@@ -26,12 +26,12 @@ public class SpellCorrector implements ISpellCorrector {
     @Override
     public String suggestSimilarWord(String inputWord) {
 
-        Node bestCurrent = null;
-        Node alternative = null;
+        Trie.Node bestCurrent = null;
+        Trie.Node alternative = null;
         int length = inputWord.length();
         List<String> valuesToCheck = new ArrayList<String>((54 * length) + 25);
 
-        alternative = (Node) dictionary.find(inputWord);
+        alternative = (Trie.Node) dictionary.find(inputWord);
         if (alternative != null){
             return alternative.toString();
         }
@@ -73,24 +73,24 @@ public class SpellCorrector implements ISpellCorrector {
         return null;
     }
 
-    private Node findDeletionInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
-        Node returnNode = null;
-        Node replace = null;
+    private Trie.Node findDeletionInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
+        Trie.Node returnNode = null;
+        Trie.Node replace = null;
         for (int i = 0; i < inputWord.length(); i++){
             StringBuilder tmp = new StringBuilder(inputWord);
             tmp.deleteCharAt(i);
             if (addToList) {
                 valuesToCheck.add(tmp.toString());
             }
-            replace = (Node) dictionary.find(tmp.toString());
+            replace = (Trie.Node) dictionary.find(tmp.toString());
             returnNode = compareSuggestions(returnNode, replace);
         }
         return returnNode;
     }
 
-    private Node findTranspositionInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
-        Node returnNode = null;
-        Node replace = null;
+    private Trie.Node findTranspositionInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
+        Trie.Node returnNode = null;
+        Trie.Node replace = null;
         for (int i = 0; i < inputWord.length() - 1; i++){
             StringBuilder tmp = new StringBuilder(inputWord);
             tmp.setCharAt(i, inputWord.charAt(i + 1));
@@ -98,15 +98,15 @@ public class SpellCorrector implements ISpellCorrector {
             if (addToList) {
                 valuesToCheck.add(tmp.toString());
             }
-            replace = (Node) dictionary.find(tmp.toString());
+            replace = (Trie.Node) dictionary.find(tmp.toString());
             returnNode = compareSuggestions(returnNode, replace);
         }
         return returnNode;
     }
 
-    private Node findAlterationInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
-        Node returnNode = null;
-        Node replace = null;
+    private Trie.Node findAlterationInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
+        Trie.Node returnNode = null;
+        Trie.Node replace = null;
         StringBuilder tmp = new StringBuilder();
         for (int i = 0; i < inputWord.length(); i++){
             for(int j = 0; j < 26; j++) {
@@ -115,7 +115,7 @@ public class SpellCorrector implements ISpellCorrector {
                 if (addToList) {
                     valuesToCheck.add(tmp.toString());
                 }
-                replace = (Node) dictionary.find(tmp.toString());
+                replace = (Trie.Node) dictionary.find(tmp.toString());
                 returnNode = compareSuggestions(returnNode, replace);
                 tmp.setLength(0);
             }
@@ -123,9 +123,9 @@ public class SpellCorrector implements ISpellCorrector {
         return returnNode;
     }
 
-    private Node findInsertionInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
-        Node returnNode = null;
-        Node replace = null;
+    private Trie.Node findInsertionInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
+        Trie.Node returnNode = null;
+        Trie.Node replace = null;
         StringBuilder tmp = new StringBuilder();
         for (int i = 0; i < inputWord.length() + 1; i++){
             for(int j = 0; j < 26; j++) {
@@ -134,7 +134,7 @@ public class SpellCorrector implements ISpellCorrector {
                 if (addToList) {
                     valuesToCheck.add(tmp.toString());
                 }
-                replace = (Node) dictionary.find(tmp.toString());
+                replace = (Trie.Node) dictionary.find(tmp.toString());
                 returnNode = compareSuggestions(returnNode, replace);
                 tmp.setLength(0);
             }
@@ -142,7 +142,7 @@ public class SpellCorrector implements ISpellCorrector {
         return returnNode;
     }
 
-    private Node compareSuggestions(Node original, Node alternative){
+    private Trie.Node compareSuggestions(Trie.Node original, Trie.Node alternative){
         try {
             if (original == null) {
                 return alternative;

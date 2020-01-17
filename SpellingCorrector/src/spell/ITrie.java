@@ -4,6 +4,15 @@ package spell;
  * Your trie class should implement the ITrie interface
  */
 public interface ITrie {
+	public interface INode {
+
+		/**
+		 * Returns the frequency count for the word represented by the node
+		 *
+		 * @return The frequency count for the word represented by the node
+		 */
+		public int getValue();
+	}
 
 	/**
 	 * Adds the specified word to the trie (if necessary) and increments the word's frequency count

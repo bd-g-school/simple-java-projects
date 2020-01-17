@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b1f68d74-06d2-4715-8e3d-5194bf8b8d40" name="Default Changelist" comment="" />
+    <list default="true" id="b1f68d74-06d2-4715-8e3d-5194bf8b8d40" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spell/SpellCorrector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spell/SpellCorrector.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +35,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.SpellTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="spell.Main" />
       <module name="SpellingCorrector" />
@@ -58,6 +61,22 @@
       <option name="PACKAGE_NAME" value="passoff" />
       <option name="MAIN_CLASS_NAME" value="passoff.SpellTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpellTest.testDNoSimilarWords" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpellingCorrector" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="passoff.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="passoff" />
+      <option name="MAIN_CLASS_NAME" value="passoff.SpellTest" />
+      <option name="METHOD_NAME" value="testDNoSimilarWords" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -98,13 +117,15 @@
       <item itemvalue="JUnit.SpellTest" />
       <item itemvalue="JUnit.TrieTest" />
       <item itemvalue="JUnit.TrieTest.testToString" />
+      <item itemvalue="JUnit.SpellTest.testDNoSimilarWords" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TrieTest" />
-        <item itemvalue="JUnit.TrieTest.testToString" />
         <item itemvalue="JUnit.SpellTest" />
+        <item itemvalue="JUnit.SpellTest.testDNoSimilarWords" />
+        <item itemvalue="JUnit.TrieTest" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.TrieTest.testToString" />
       </list>
     </recent_temporary>
   </component>
@@ -154,38 +175,38 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1579196967463" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1579230911226">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1579236092428">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579230911226" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1579230911225">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579236092428" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1579236092428">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1579230911225" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1579230911222">
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1579236092428" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1579236092428">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1579230911222" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1579230911226">
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1579236092428" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1579236092428">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1579230911226" />
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1579126190940">
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1579236092428" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1579235458029">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579126190940" />
-    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1579126190940">
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579235458029" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1579235458029">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1579126190940" />
-    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1579126190940">
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1579235458029" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1579235458029">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1579126190940" />
-    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1579126190940">
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1579235458029" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1579235458029">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1579126190940" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1579235458029" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1579113368571">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

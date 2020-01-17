@@ -1,11 +1,14 @@
 package spell;
 
+import javafx.util.Pair;
+
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SpellCorrector implements ISpellCorrector {
-    //EDIT THIS OUT FOR PASSOFF
 
     public SpellCorrector(){
         dictionary = null;
@@ -20,52 +23,126 @@ public class SpellCorrector implements ISpellCorrector {
         while (scanner.hasNext()) {
             dictionary.add(scanner.next());
         }
-        System.out.println(dictionary.toString());
     }
 
     @Override
     public String suggestSimilarWord(String inputWord) {
+
         Node bestCurrent = null;
         Node alternative = null;
+        int length = inputWord.length();
+        List<String> valuesToCheck = new ArrayList<String>((54 * length) + 25);
 
         alternative = (Node) dictionary.find(inputWord);
+        if (alternative != null){
+            return alternative.toString();
+        }
+
+        alternative = findDeletionInstance(inputWord, valuesToCheck, true);
         bestCurrent = compareSuggestions(bestCurrent, alternative);
 
-        alternative = findDeletionInstance(inputWord);
+        alternative = findTranspositionInstance(inputWord, valuesToCheck, true);
+        bestCurrent = compareSuggestions(bestCurrent, alternative);
+
+        alternative = findAlterationInstance(inputWord, valuesToCheck, true);
+        bestCurrent = compareSuggestions(bestCurrent, alternative);
+
+        alternative = findInsertionInstance(inputWord, valuesToCheck, true);
         bestCurrent = compareSuggestions(bestCurrent, alternative);
 
         if (bestCurrent != null){
             return bestCurrent.toString();
         }
+
+        for(String oneEditFromInput: valuesToCheck){
+            alternative = findDeletionInstance(oneEditFromInput, null, false);
+            bestCurrent = compareSuggestions(bestCurrent, alternative);
+
+            alternative = findTranspositionInstance(oneEditFromInput, null, false);
+            bestCurrent = compareSuggestions(bestCurrent, alternative);
+
+            alternative = findAlterationInstance(oneEditFromInput, null, false);
+            bestCurrent = compareSuggestions(bestCurrent, alternative);
+
+            alternative = findInsertionInstance(oneEditFromInput, null, false);
+            bestCurrent = compareSuggestions(bestCurrent, alternative);
+        }
+
+        if (bestCurrent != null){
+            return bestCurrent.toString();
+        }
+
         return null;
     }
 
-    public Node nextSimilar(String inputWord) {
-        Node bestCurrent = null;
-        Node alternative = null;
-
-        alternative = (Node)dictionary.find(inputWord);
-        bestCurrent = compareSuggestions(bestCurrent, alternative);
-
-        alternative = findDeletionInstance(inputWord);
-        bestCurrent = compareSuggestions(bestCurrent, alternative);
-
-        return bestCurrent;
-    }
-
-    private Node findDeletionInstance(String inputWord){
+    private Node findDeletionInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
         Node returnNode = null;
         Node replace = null;
         for (int i = 0; i < inputWord.length(); i++){
             StringBuilder tmp = new StringBuilder(inputWord);
             tmp.deleteCharAt(i);
-            //System.out.println(tmp.toString());
-            replace = (Node)dictionary.find(tmp.toString());
+            if (addToList) {
+                valuesToCheck.add(tmp.toString());
+            }
+            replace = (Node) dictionary.find(tmp.toString());
             returnNode = compareSuggestions(returnNode, replace);
         }
         return returnNode;
     }
 
+    private Node findTranspositionInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
+        Node returnNode = null;
+        Node replace = null;
+        for (int i = 0; i < inputWord.length() - 1; i++){
+            StringBuilder tmp = new StringBuilder(inputWord);
+            tmp.setCharAt(i, inputWord.charAt(i + 1));
+            tmp.setCharAt(i + 1, inputWord.charAt(i));
+            if (addToList) {
+                valuesToCheck.add(tmp.toString());
+            }
+            replace = (Node) dictionary.find(tmp.toString());
+            returnNode = compareSuggestions(returnNode, replace);
+        }
+        return returnNode;
+    }
+
+    private Node findAlterationInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
+        Node returnNode = null;
+        Node replace = null;
+        StringBuilder tmp = new StringBuilder();
+        for (int i = 0; i < inputWord.length(); i++){
+            for(int j = 0; j < 26; j++) {
+                tmp.append(inputWord);
+                tmp.setCharAt(i, (char)(j + 97));
+                if (addToList) {
+                    valuesToCheck.add(tmp.toString());
+                }
+                replace = (Node) dictionary.find(tmp.toString());
+                returnNode = compareSuggestions(returnNode, replace);
+                tmp.setLength(0);
+            }
+        }
+        return returnNode;
+    }
+
+    private Node findInsertionInstance(String inputWord, List<String> valuesToCheck, boolean addToList){
+        Node returnNode = null;
+        Node replace = null;
+        StringBuilder tmp = new StringBuilder();
+        for (int i = 0; i < inputWord.length() + 1; i++){
+            for(int j = 0; j < 26; j++) {
+                tmp.append(inputWord);
+                tmp.insert(i, (char)(j + 97));
+                if (addToList) {
+                    valuesToCheck.add(tmp.toString());
+                }
+                replace = (Node) dictionary.find(tmp.toString());
+                returnNode = compareSuggestions(returnNode, replace);
+                tmp.setLength(0);
+            }
+        }
+        return returnNode;
+    }
 
     private Node compareSuggestions(Node original, Node alternative){
         try {

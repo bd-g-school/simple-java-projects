@@ -4,7 +4,7 @@ public class Trie implements ITrie {
     public class Node implements ITrie.INode {
         public Node() {
             count = 0;
-            nodes = new Node[26];
+            nodes = new Trie.Node[26];
             isNewNode = true;
         }
 
@@ -16,6 +16,7 @@ public class Trie implements ITrie {
         public boolean isNewNode(){
             return isNewNode;
         }
+        public void oldNode() { isNewNode = false; }
 
         @Override
         public int getValue() {
@@ -77,13 +78,10 @@ public class Trie implements ITrie {
 
         public Trie.Node node(char letter){
             int index = (int)Character.toLowerCase(letter) - 97;
-            int nodeAdded = 0;
             if (nodes[index] == null) {
                 nodes[index] = new Trie.Node();
-                nodeAdded++;
-            }
-            else{
-                isNewNode = false;
+            } else{
+                nodes[index].oldNode();
             }
             return nodes[index];
         }
@@ -105,7 +103,7 @@ public class Trie implements ITrie {
         numNodes = 1;
     }
 
-    private Node root;
+    private Trie.Node root;
     private int numWords;
     private int numNodes;
 

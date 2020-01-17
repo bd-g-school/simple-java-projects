@@ -1,10 +1,5 @@
 package spell;
 
-import javafx.util.Pair;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Trie implements ITrie {
     public Trie(){
         root = new Node();
@@ -18,14 +13,16 @@ public class Trie implements ITrie {
 
     @Override
     public void add(String word) {
-       Pair<Node, Integer> next = new Pair(root, 0);
+       Node next = root;
         for(int i = 0; i < word.length(); i++) {
-            next = next.getKey().node(word.charAt(i));
-            numNodes += next.getValue();
+            next = next.node(word.charAt(i));
+            if (next.isNewNode()){
+                numNodes++;
+            }
         }
-        if (next.getKey().incrementCount()){
+        if (next.incrementCount()){
             numWords++;
-            next.getKey().setString(word.toLowerCase());
+            next.setString(word.toLowerCase());
         };
     }
 
@@ -44,8 +41,8 @@ public class Trie implements ITrie {
     @Override
     public String toString(){
         StringBuilder myTrie = new StringBuilder();
-        List<Character> currentString = new ArrayList<>(50);
-        root.toString(myTrie, currentString, 0);
+        StringBuilder currentString = new StringBuilder(50);
+        root.toString(myTrie, currentString);
         return myTrie.toString();
     }
 

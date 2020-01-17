@@ -1,7 +1,5 @@
 package spell;
 
-import javafx.util.Pair;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

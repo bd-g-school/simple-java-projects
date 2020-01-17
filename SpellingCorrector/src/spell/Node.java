@@ -1,19 +1,20 @@
 package spell;
 
-import javafx.util.Pair;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Node implements INode {
     public Node() {
         count = 0;
         nodes = new Node[26];
+        isNewNode = true;
     }
 
     private int count;
     private Node[] nodes;
     private String value;
+    private boolean isNewNode;
+
+    public boolean isNewNode(){
+        return isNewNode;
+    }
 
     @Override
     public int getValue() {
@@ -27,22 +28,16 @@ public class Node implements INode {
     public void setString(String value){ this.value = value; }
 
 
-    public void toString(StringBuilder myTrie, List<Character> currentString, int level){
+    public void toString(StringBuilder myTrie, StringBuilder currentString){
         if (count > 0){
-            for(int i = 0; i < level; i++){
-                myTrie.append(currentString.get(i));
-            }
+            myTrie.append(currentString.toString());
             myTrie.append("\n");
         }
         for(int i = 0; i < 26; i++){
             if (nodes[i] != null){
-                if (currentString.size() < level + 1){
-                    currentString.add((char)(i + 97));
-                }
-                else {
-                    currentString.set(level, (char) (i + 97));
-                }
-                nodes[i].toString(myTrie, currentString, level + 1);
+                currentString.append((char)(i + 97));
+                nodes[i].toString(myTrie, currentString);
+                currentString.setLength(currentString.length() - 1);
             }
         }
     }
@@ -79,14 +74,17 @@ public class Node implements INode {
         return nodes[index];
     }
 
-    public Pair<Node, Integer> node(char letter){
+    public Node node(char letter){
         int index = (int)Character.toLowerCase(letter) - 97;
         int nodeAdded = 0;
         if (nodes[index] == null) {
             nodes[index] = new Node();
             nodeAdded++;
         }
-        return new Pair(nodes[index], nodeAdded);
+        else{
+            isNewNode = false;
+        }
+        return nodes[index];
     }
 
     public int makeHash(){

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b1f68d74-06d2-4715-8e3d-5194bf8b8d40" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spell/Trie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spell/Trie.java" afterDir="false" />
-    </list>
+    <list default="true" id="b1f68d74-06d2-4715-8e3d-5194bf8b8d40" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +26,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/source/repos/uur_website" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -115,9 +112,9 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.SpellTest" />
+      <item itemvalue="JUnit.SpellTest.testDNoSimilarWords" />
       <item itemvalue="JUnit.TrieTest" />
       <item itemvalue="JUnit.TrieTest.testToString" />
-      <item itemvalue="JUnit.SpellTest.testDNoSimilarWords" />
     </list>
     <recent_temporary>
       <list>
@@ -175,10 +172,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="399" y="89" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1579113445465" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1579196967463">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1579549744310">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1579196967463" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1579549744310" />
     <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1579292110893">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
